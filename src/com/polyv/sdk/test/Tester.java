@@ -2,6 +2,9 @@ package com.polyv.sdk.test;
 
 import java.util.ArrayList;
 
+import net.polyv.PolyvClient;
+import net.polyv.ProgressImpl;
+
 import com.polyv.sdk.PolyvSDKClient;
 import com.polyv.sdk.Video;
 
@@ -14,7 +17,22 @@ public class Tester {
 		// TODO Auto-generated method stub
 		testUpload();
 	}
-
+	/**
+	 * 断点续传上传实例
+	 */
+	public static void testResumableUpload(){
+		//需要userid，writetoken,readtoken三个参数
+		PolyvClient client = new PolyvClient("sl8da4jjbx",
+				"nsJ7ZgQMN0-QsVkscukWt-qLfodxoDFm",
+				"Y07Q4yopIVXN83n-MPoIlirBKmrMPJu0");
+		client.setFilename("/Users/hhl/Downloads/test.avi");
+		//ProgressImpl实现Progress接口，只print百分比
+		//public void run(long offset, long max)，offset为当前上传完成的位移量，max是总量
+		client.setProgress(new ProgressImpl());
+		client.upload();
+		System.out.println(client.getLocation());
+		System.out.println(client.getJson());
+	}
 	public static void testGet() {
 		try {
 			Video v = PolyvSDKClient.getInstance().getVideo("sl8da4jjbx155339ddac9d2b62a76eee_s");
