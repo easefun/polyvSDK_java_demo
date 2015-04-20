@@ -2,37 +2,22 @@ package com.polyv.sdk.test;
 
 import java.util.ArrayList;
 
-import net.polyv.PolyvClient;
-import net.polyv.ProgressImpl;
-
 import com.polyv.sdk.PolyvSDKClient;
 import com.polyv.sdk.Video;
+
+
+
 
 public class Tester {
 	public static void main(String[] args) {
 		PolyvSDKClient client = PolyvSDKClient.getInstance();
 		client.setReadtoken("nsJ7ZgQMN0-QsVkscukWt-qLfodxoDFm");
-		client.setWritetoken("Y07Q4yopIVXN83n-MPoIlirBKmrMPJu0");
+		client.setWritetoken("L6DD8B1Ke4ioT6I-2ihqp6QGxTM5ZbBZ");
 
 		// TODO Auto-generated method stub
 		testUpload();
 	}
-	/**
-	 * 断点续传上传实例
-	 */
-	public static void testResumableUpload(){
-		//需要userid，writetoken,readtoken三个参数
-		PolyvClient client = new PolyvClient("sl8da4jjbx",
-				"nsJ7ZgQMN0-QsVkscukWt-qLfodxoDFm",
-				"Y07Q4yopIVXN83n-MPoIlirBKmrMPJu0");
-		client.setFilename("/Users/hhl/Downloads/test.avi");
-		//ProgressImpl实现Progress接口，只print百分比
-		//public void run(long offset, long max)，offset为当前上传完成的位移量，max是总量
-		client.setProgress(new ProgressImpl());
-		client.upload();
-		System.out.println(client.getLocation());
-		System.out.println(client.getJson());
-	}
+	
 	public static void testGet() {
 		try {
 			Video v = PolyvSDKClient.getInstance().getVideo("sl8da4jjbx155339ddac9d2b62a76eee_s");
@@ -47,7 +32,7 @@ public class Tester {
 			public void run() {
 				Video v;
 				try {
-					v = PolyvSDKClient.getInstance().upload("/Users/hhl/Downloads/test.avi",
+					v = PolyvSDKClient.getInstance().upload("/Users/hhl/Desktop/videos/ttt.mp4",
 							"我的标题", "tag", "desc", 0);
 					System.out.println(v.getFlv1());
 				} catch (Exception e) {
