@@ -12,16 +12,18 @@ public class Tester {
 	public static void main(String[] args) {
 		PolyvSDKClient client = PolyvSDKClient.getInstance();
 		client.setReadtoken("nsJ7ZgQMN0-QsVkscukWt-qLfodxoDFm");
-		client.setWritetoken("L6DD8B1Ke4ioT6I-2ihqp6QGxTM5ZbBZ");
+		client.setWritetoken("Y07Q4yopIVXN83n-MPoIlirBKmrMPJu0");
 
 		// TODO Auto-generated method stub
-		testUpload();
+		//testUpload();
+		testListVideo();
 	}
+	
 	
 	public static void testGet() {
 		try {
-			Video v = PolyvSDKClient.getInstance().getVideo("sl8da4jjbx155339ddac9d2b62a76eee_s");
-			System.out.println(v.getMp4_1());
+			Video v = PolyvSDKClient.getInstance().getVideo("sl8da4jjbxb241aa1ce2ac6e2810cdc2_s");
+			System.out.println(v.getMp4_1() + "/" + v.getSeed());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
